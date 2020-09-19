@@ -13,7 +13,7 @@
 
 .InputElement {
   outline: none;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   background: white;
   font-weight: inherit;
   padding: 6px 10px;
@@ -24,9 +24,8 @@
 
 .InputElement:focus {
   outline: none;
-  background: #CCC;
+  background: #ccc;
 }
-
 
 .Invalid {
   border-color: red;
@@ -39,5 +38,6 @@
   text-align: left;
   color: red;
   font-size: 12px;
-  margin: 0 !important
+  margin: 0 !important;
+  font-weight: 500;
 }

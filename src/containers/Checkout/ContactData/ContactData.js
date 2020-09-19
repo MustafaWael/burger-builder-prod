@@ -41,35 +41,6 @@ class ContactData extends Component {
         valid: false,
         touched: false,
       },
-      email: {
-        elementType: 'input',
-        value: '',
-        elementConfig: {
-          type: 'email',
-          placeholder: 'Your E-mail',
-        },
-        validation: {
-          required: true,
-          isEmail: true,
-        },
-        valid: false,
-        touched: false,
-      },
-      password: {
-        elementType: 'input',
-        value: '',
-        elementConfig: {
-          type: 'password',
-          placeholder: 'password',
-        },
-        validation: {
-          required: true,
-          minLength: 5,
-        },
-        valid: false,
-        touched: false,
-        errorMessage: '',
-      },
       country: {
         elementType: 'input',
         value: '',

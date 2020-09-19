@@ -26,12 +26,13 @@ export const checkValidaity = (value, rules) => {
 
   if (rules.isEmail) {
     const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-    isValid = pattern.test(value) && isValid
+    isValid = pattern.test(value)
   }
 
   if (rules.isNumeric) {
     const pattern = /^\d+$/
     isValid = pattern.test(value) && isValid
+    console.log(value)
   }
 
   return isValid
@@ -44,7 +45,7 @@ export const changedHandler = (state, ev, inputId, setState, route) => {
   }
 
   const { validation } = updatedOrderForm[inputId]
-
+  console.log(updatedOrderForm)
   updatedOrderForm[inputId].value = evTargetValue
 
   if (updatedOrderForm[inputId].elementType !== 'select') {
@@ -66,10 +67,16 @@ export const changedHandler = (state, ev, inputId, setState, route) => {
 }
 
 const authErrorMessage = (inputId, updatedOrderForm) => {
+  if (inputId === 'email') {
+    if (!updatedOrderForm.email.valid)
+      updatedOrderForm[inputId].errorMessage = 'invalid email'
+    else updatedOrderForm[inputId].errorMessage = ''
+  }
+
   if (inputId === 'password') {
     if (
       !(
-        updatedOrderForm.password.value.length >
+        updatedOrderForm.password.value.length >=
         updatedOrderForm.password.validation.minLength
       )
     )
@@ -101,8 +108,12 @@ const checkoutErrorMessage = (inputId, updatedOrderForm) => {
         updatedOrderForm.zipCode.validation.minLength ||
       updatedOrderForm.zipCode.value.length <
         updatedOrderForm.zipCode.validation.maxLength
-    )
+    ) {
       updatedOrderForm[inputId].errorMessage = 'should be 5'
-    else updatedOrderForm[inputId].errorMessage = ''
+    } else if (!updatedOrderForm.zipCode.valid) {
+      updatedOrderForm[inputId].errorMessage = 'should be a number'
+    } else if (!updatedOrderForm.zipCode.valid) {
+      updatedOrderForm[inputId].errorMessage = 'should be a number'
+    } else updatedOrderForm[inputId].errorMessage = ''
   }
 }

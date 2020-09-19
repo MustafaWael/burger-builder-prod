@@ -25,6 +25,7 @@ class Auth extends Component {
         },
         valid: false,
         touched: false,
+        errorMessage: '',
       },
       password: {
         elementType: 'input',
@@ -113,6 +114,8 @@ class Auth extends Component {
     if (this.props.error) {
       if (this.props.error.message.includes('EXIST'))
         errorMessage = <p>Sorry email exist, try another email</p>
+      if (this.props.error.message.includes('PASSWORD'))
+        errorMessage = <p>Sorry invalid password</p>
       if (this.props.error.message.includes('NOT_FOUND'))
         errorMessage = <p>Sorry you are not signed up!!</p>
     }

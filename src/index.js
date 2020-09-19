@@ -25,6 +25,7 @@ const rootStore = combineReducers({
   auth: authReducer,
 })
 
+// const store = createStore(rootStore, composeEnhancers(applyMiddleware(thunk)))
 const store = createStore(rootStore, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
